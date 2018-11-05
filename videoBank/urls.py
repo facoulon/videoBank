@@ -19,7 +19,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
+from videoRental.views import MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView, MovieDeleteView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
+    url(r"^$", MovieListView.as_view(), name="movie-list"),
+    url(r"^(?P<slug>[-\w]+)/$", MovieDetailView.as_view(), name="movie-detail"),
+    url(r"^movie/create$", MovieCreateView.as_view(), name="movie-create"),
+    url(r"^movie/(?P<slug>[-\w]+)/update$", MovieUpdateView.as_view(), name="movie-update"),
+    url(r"^movie/(?P<slug>[-\w]+)/delete$", MovieDeleteView.as_view(), name="movie-delete"),
+    
+    
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

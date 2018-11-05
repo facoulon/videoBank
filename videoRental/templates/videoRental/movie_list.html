@@ -1,0 +1,17 @@
+{% extends 'videoRental/base.html' %}
+
+{% block content %}
+<div class="container-list">
+    <div class="row list-movie">
+        {% for movie in object_list %}
+        <div class="col-3 movie">
+            <a href="{% url "movie-detail" movie.slug %}">
+                <h2>{{movie.title}}</h2>
+                <img class="img-fluid cover" src="{{movie.picture.url}}" alt="Affiche">
+            </a>
+        </div>
+        
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

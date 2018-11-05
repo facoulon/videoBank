@@ -1,0 +1,58 @@
+{% extends 'videoRental/base.html' %}
+
+{% block content %}
+<div class="container-detail">
+    <div class="row movie-detail">
+        <div class="col-lg-4">
+            <h2>{{movie.title}}</h2>
+            <img class="cover" src="{{movie.picture.url}}" alt="Affiche">
+        </div>
+        <div class="col-lg-4">
+            
+            {% if movie.rented == True %}
+                <h3>Indisponible</h3>
+            {% else %}
+                <h3>A louer</h3>
+            {% endif %}
+                
+            <ul>
+                <li>
+                    Genre : {{movie.genre}}
+                </li>
+                <li>
+                    Directeur : {{movie.director}}
+                </li>
+                <li>
+                    Acteurs : {{movie.actors}}
+                </li>
+                <li>Pays : {{movie.country}}
+                </li>
+                <li>
+                    Date de sortie : {{movie.release_date}}
+                </li>
+                <li>Durée : {{ movie.length|time:"H"}}h
+                    {{ movie.length|time:"i"}}m</li>
+            </ul>
+            <span>Synopsis :</span>
+            <p>{{movie.synopsis}}</p>
+        </div>
+        <div class="col-lg-4">
+            
+            {% if movie.trailer != null %}
+            <iframe  
+            src="{{movie.trailer_url}}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            controls=2 
+            ></iframe>
+            {% endif %}
+                <a href="{% url "movie-update" movie.slug %}">Modifier</a>
+                <form action="{% url "movie-delete" movie.slug %}" method="get">{% csrf_token %}
+                    <button type="submit">Supprimer</button>
+                </form>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
