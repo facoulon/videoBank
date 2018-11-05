@@ -37,9 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
+    'userena',
+    'easy_thumbnails',
     'videoRental',
+    'guardian',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
+SITE_ID = 1
+ANONYMOUS_USER_NAME = "admin"
+AUTH_PROFILE_MODULE = "videoRental.Customer"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
