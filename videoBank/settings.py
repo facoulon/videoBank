@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'videoRental',
     'userena',
     'easy_thumbnails',
-    'videoRental',
     'guardian',
 ]
 
@@ -141,6 +141,11 @@ STATICFILES_DIRS = [
 os.path.join(BASE_DIR, "node_modules"),
 ]
 
-LOGIN_URL = "/login"
-LOGIN_OUT = "/logout"
-LOGIN_REDIRECT_URL = "/"
+
+USERENA_SIGNIN_REDIRECT_URL = '/'
+USERENA_SIGNUP_REDIRECT_URL = '/'
+USERENA_REDIRECT_ON_SIGNOUT = '/'
+USERENA_SIGNIN_AFTER_SIGNUP = True
+USERENA_ACTIVATION_REQUIRED = False
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/'

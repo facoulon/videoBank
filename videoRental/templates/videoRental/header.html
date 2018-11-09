@@ -24,11 +24,35 @@
                     <li class="nav-item">
                       <a class="nav-link" href="{% url "movie-create" %}">Ajouter un Film</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url "movie-rent-list" %}">Liste de Film louer</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">Admin Site</a>
-                    </li>
+                    {% if user.is_authenticated %}
+                      <li class="nav-link">
+                          <span class="text-white">Hello </span><span class="text-warning"> {{request.user}}</span>
+                      </li>
+                      <li>
+                        <a class="nav-link" href="{% url "userena_profile_detail" request.user %}">Mon Profil</a>
+                      </li>
+                      <li>
+                        <a class="nav-link" href="{% url "movie-rent-customer-log" request.user %}">Mes Location</a>
+                      </li>
+                        <a class="nav-link" href="{% url "userena_signout" %}">Déconnection</a>
+                        {% if user.is_superuser %}
+                        <li class="nav-item">
+                          <a class="nav-link" href="/admin">Admin Site</a>
+                        </li>
+                        {% endif %}
+                      {% else %}
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url "userena_signin" %}">Se Connecter</a>
+                        </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{% url "userena_signup" %}">S'inscrire</a>
+                        </li>
+                      {% endif %}
                 </ul>
                 </div>
               </nav>   

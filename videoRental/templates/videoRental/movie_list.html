@@ -7,7 +7,12 @@
         <div class="col-3 movie">
             <a href="{% url "movie-detail" movie.slug %}">
                 <h2>{{movie.title}}</h2>
+                
+                {% if movie.picture != "" %}
                 <img class="img-fluid cover" src="{{movie.picture.url}}" alt="Affiche">
+                {% else %}
+                <p class="cover">Image indisponible</p>
+                {% endif %}
             </a>
         </div>
         

@@ -5,7 +5,11 @@
     <div class="row movie-detail">
         <div class="col-lg-4">
             <h2>{{movie.title}}</h2>
-            <img class="cover" src="{{movie.picture.url}}" alt="Affiche">
+            {% if movie.picture != "" %}
+                <img class="cover" src="{{movie.picture.url}}" alt="Affiche">
+            {% else %}
+                <p class="cover">Image indisponible</p>
+            {% endif %}
         </div>
         <div class="col-lg-4">
             
@@ -47,10 +51,26 @@
             controls=2 
             ></iframe>
             {% endif %}
-                <a href="{% url "movie-update" movie.slug %}">Modifier</a>
+                <a href="{% url "movie-update" movie.slug %}">
+                <button>Modifier</button>
+                </a>
                 <form action="{% url "movie-delete" movie.slug %}" method="get">{% csrf_token %}
                     <button type="submit">Supprimer</button>
                 </form>
+                {% if movie.rented == False %}
+                <form action="{% url 'movieRentAdd' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="movie-pk" value="{{movie.id}}" hidden>
+                <input type="text" name="customer-username" value="{{user.username}}" hidden>
+                    <button type="submit">Louer</button>                
+                </form>
+                {% else %}
+                <form action="{% url 'movieReturn' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="movie-pk" value="{{movie.id}}" hidden>
+                    <button type="submit">Retour</button>                
+                </form>
+                {% endif %}
         </div>
     </div>
 </div>

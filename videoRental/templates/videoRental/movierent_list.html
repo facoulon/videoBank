@@ -1,0 +1,29 @@
+{% extends 'videoRental/base.html' %}
+
+{% block content %}
+<div class="container-detail">
+<h1>Movie Rent List</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Movie</th>
+      <th scope="col">Checkout Date</th>
+      <th scope="col">Return Date</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for rent in object_list %}
+<tr>
+<th scope="row">{{rent.id}}</th>
+<td>{{rent.customer.user.username}}</td>
+<td>{{rent.movie}}</td>
+<td>{{rent.checkout_date}}</td>
+<td>{{rent.return_date}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock content %}

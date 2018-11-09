@@ -24,7 +24,7 @@ class Movie(models.Model):
     release_date = models.DateField(auto_now=False, auto_now_add=False,blank=True, null=True)
     rented = models.BooleanField()
     title = models.CharField(max_length=100, blank=True, null=True)
-    slug = AutoSlugField(populate_from="title")
+    slug = AutoSlugField(populate_from="title", always_update=True, unique_with=['title'])
     synopsis = models.TextField(blank=True, null=True)
     trailer_url = models.URLField(max_length=200,blank=True, null=True)
     genre = models.ForeignKey('MovieGenre',blank=True, null=True, on_delete=models.CASCADE)
@@ -36,8 +36,11 @@ class Customer(UserenaBaseProfile):
     """Model definition for Customer."""
     user = models.OneToOneField(User, unique=True)
 
+    def __unicode__(self):
+        return self.user.username
+
 class MovieRent(models.Model):
     checkout_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    return_date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    return_date = models.DateTimeField(auto_now=False, auto_now_add=False,blank=True, null=True)
     customer = models.ForeignKey('Customer',blank=True, null=True, on_delete=models.CASCADE)
     movie = models.ForeignKey('Movie',blank=True, null=True, on_delete=models.CASCADE)
