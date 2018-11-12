@@ -47,7 +47,7 @@ class MovieRentListView(ListView):
 
     def get_queryset(self):
 
-        if self.request.user == "admin":
+        if self.request.user.is_superuser:
             return MovieRent.objects.all().order_by('-checkout_date')
         else:
             query = self.request.user
