@@ -7,7 +7,12 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
+      
+      
+      
+      {% if user.is_superuser %}
       <th scope="col">Customer</th>
+      {% endif %}
       <th scope="col">Movie</th>
       <th scope="col">Checkout Date</th>
       <th scope="col">Return Date</th>
@@ -17,7 +22,9 @@
 {% for rent in object_list %}
 <tr>
 <th scope="row">{{rent.id}}</th>
+{% if user.is_superuser %}
 <td>{{rent.customer.user.username}}</td>
+{% endif %}
 <td>{{rent.movie}}</td>
 <td>{{rent.checkout_date}}</td>
 <td>{{rent.return_date}}</td>

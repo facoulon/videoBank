@@ -25,7 +25,7 @@
                       <a class="nav-link" href="{% url "movie-create" %}">Ajouter un Film</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url "movie-rent-list" %}">Liste de Film louer</a>
+                      <a class="nav-link" href="{% url "movie-rent-list" %}">Liste de Location</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -37,7 +37,7 @@
                         <a class="nav-link" href="{% url "userena_profile_detail" request.user %}">Mon Profil</a>
                       </li>
                       <li>
-                        <a class="nav-link" href="{% url "movie-rent-customer-log" request.user %}">Mes Location</a>
+                        <a class="nav-link" href="{% url "movie-rent-list" %}">Mes Location</a>
                       </li>
                         <a class="nav-link" href="{% url "userena_signout" %}">Déconnection</a>
                         {% if user.is_superuser %}

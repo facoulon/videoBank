@@ -64,7 +64,7 @@
                 <input type="text" name="customer-username" value="{{user.username}}" hidden>
                     <button type="submit">Louer</button>                
                 </form>
-                {% else %}
+                {% elif user.is_superuser %}
                 <form action="{% url 'movieReturn' %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="movie-pk" value="{{movie.id}}" hidden>

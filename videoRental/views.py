@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
 from .models import Movie, MovieRent, Customer
-# Create your views here.
+from django.contrib.auth.mixins import PermissionRequiredMixin
 import datetime
 from datetime import timedelta, datetime
 
@@ -17,7 +17,8 @@ class MovieListView(ListView):
 class MovieDetailView(DetailView):
     model = Movie
 
-class MovieCreateView(CreateView):
+class MovieCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'videoRent.add_Movie'
     model = Movie
     template_name = "videoRental/movie_form.html"
     fields = "__all__"
@@ -25,7 +26,8 @@ class MovieCreateView(CreateView):
     def get_success_url(self):
         return reverse('movie-detail', args=[self.object.slug] )
 
-class MovieUpdateView(UpdateView):
+class MovieUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'videoRent.change_Movie'
     model = Movie
     template_name = "videoRental/movie_form.html"
     fields = "__all__"
@@ -33,7 +35,8 @@ class MovieUpdateView(UpdateView):
     def get_success_url(self):
         return reverse('movie-detail', args=[self.object.slug])
 
-class MovieDeleteView(DeleteView):
+class MovieDeleteView(PermissionRequiredMixin,DeleteView):
+    permission_required = 'videoRent.delete_Movie'
     model = Movie
 
     def get_success_url(self):
@@ -43,16 +46,15 @@ class MovieRentListView(ListView):
     model = MovieRent
 
     def get_queryset(self):
-        if 'username' in self.kwargs:
-            query = self.kwargs['username']
+
+        if self.request.user == "admin":
+            return MovieRent.objects.all().order_by('-checkout_date')
+        else:
+            query = self.request.user
             user = User.objects.get(username=query)
             customer = Customer.objects.get(user=user)
-            if query != None and query != "admin":
-                return MovieRent.objects.filter(customer=customer)
-            else:
-                return MovieRent.objects.all()
-        return MovieRent.objects.all()
-        
+            return MovieRent.objects.filter(customer=customer).order_by('-checkout_date')
+
 
 class MovieRentView(View):
 
