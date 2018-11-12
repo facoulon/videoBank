@@ -1,8 +1,8 @@
 {% extends 'videoRental/base.html' %}
-
+{% load i18n %}
 {% block content %}
 <div class="container-detail">
-<h1>Movie Rent List</h1>
+<h1>{% trans 'Movie Rent List' %}</h1>
 <table class="table">
   <thead>
     <tr>
@@ -11,11 +11,11 @@
       
       
       {% if user.is_superuser %}
-      <th scope="col">Customer</th>
+      <th scope="col">{% trans 'Customer' %}</th>
       {% endif %}
-      <th scope="col">Movie</th>
-      <th scope="col">Checkout Date</th>
-      <th scope="col">Return Date</th>
+      <th scope="col">{% trans 'Movie' %}</th>
+      <th scope="col">{% trans 'Checkout Date' %}</th>
+      <th scope="col">{% trans 'Return Date' %}</th>
     </tr>
   </thead>
   <tbody>

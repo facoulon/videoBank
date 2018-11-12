@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
+    'parler',
     'videoRental',
     'userena',
     'easy_thumbnails',
@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'videoBank.urls'
@@ -117,9 +118,23 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
-LANGUAGE_CODE = 'fr-fr'
-
+from django.utils.translation import ugettext_lazy as _
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
+LANGUAGE_CODE = 'fr'
+LANGUAGES = [
+    ('fr',_('Francais')),
+    ('en',_('Anglais')),
+]
+PARLER_LANGUAGES = {
+    1: (
+        {'code': 'fr',},
+        {'code': 'en',},
+    ),
+    'default': {
+        'fallback': 'fr',             # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'hide_untranslated': False,   # the default; let .active_translations() return fallbacks too.
+    }
+}
 TIME_ZONE = 'UTC'
 
 USE_I18N = True

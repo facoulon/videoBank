@@ -3,8 +3,13 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 from videoRental.models import Movie,MovieGenre,Customer,MovieRent
+from parler.admin import TranslatableAdmin, TranslatableStackedInline
+
+
+
+
 # Register your models here.
-class MovieAdmin(admin.ModelAdmin):
+class MovieAdmin(TranslatableAdmin):
     list_display = ("title","director","release_date")
 admin.site.register(Movie, MovieAdmin)
 

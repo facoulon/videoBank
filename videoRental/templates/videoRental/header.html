@@ -1,4 +1,5 @@
-{% load static %}
+{% load static i18n %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,38 +20,38 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url "movie-list" %}">Liste Film</a>
+                      <a class="nav-link" href="{% url "movie-list" %}">{% trans "Liste Film" %}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url "movie-create" %}">Ajouter un Film</a>
+                      <a class="nav-link" href="{% url "movie-create" %}">{% trans "Ajouter un Film" %}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url "movie-rent-list" %}">Liste de Location</a>
+                      <a class="nav-link" href="{% url "movie-rent-list" %}">{% trans "Liste de Location" %}</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                       <li class="nav-link">
-                          <span class="text-white">Hello </span><span class="text-warning"> {{request.user}}</span>
+                          <span class="text-white">Hello </span><span class="text-warning">{{request.user}}</span>
                       </li>
                       <li>
-                        <a class="nav-link" href="{% url "userena_profile_detail" request.user %}">Mon Profil</a>
+                        <a class="nav-link" href="{% url "userena_profile_detail" request.user %}">{% trans "Mon Profil" %}</a>
                       </li>
                       <li>
-                        <a class="nav-link" href="{% url "movie-rent-list" %}">Mes Location</a>
+                        <a class="nav-link" href="{% url "movie-rent-list" %}">{% trans "Mes Location" %}</a>
                       </li>
-                        <a class="nav-link" href="{% url "userena_signout" %}">Déconnection</a>
+                        <a class="nav-link" href="{% url "userena_signout" %}">{% trans "Déconnection"  %}</a>
                         {% if user.is_superuser %}
                         <li class="nav-item">
-                          <a class="nav-link" href="/admin">Admin Site</a>
+                          <a class="nav-link" href="/admin">{% trans " Admin Site" %}</a>
                         </li>
                         {% endif %}
                       {% else %}
                       <li class="nav-item">
-                          <a class="nav-link" href="{% url "userena_signin" %}">Se Connecter</a>
+                          <a class="nav-link" href="{% url "userena_signin" %}">{% trans "Se Connecter" %}</a>
                         </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="{% url "userena_signup" %}">S'inscrire</a>
+                          <a class="nav-link" href="{% url "userena_signup" %}">{% trans "S'inscrire" %}</a>
                         </li>
                       {% endif %}
                 </ul>

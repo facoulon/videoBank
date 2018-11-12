@@ -1,5 +1,5 @@
 {% extends 'videoRental/base.html' %}
-
+{% load i18n parler_tags %}
 {% block content %}
 <div class="container-detail">
     <div class="row movie-detail">
@@ -8,41 +8,41 @@
             {% if movie.picture != "" %}
                 <img class="cover" src="{{movie.picture.url}}" alt="Affiche">
             {% else %}
-                <p class="cover">Image indisponible</p>
+                <p class="cover">{%trans 'Image indisponible'%}</p>
             {% endif %}
         </div>
         <div class="col-lg-4">
             
             {% if movie.rented == True %}
-                <h3>Indisponible</h3>
+                <h3>{%trans 'Indisponible'%}</h3>
             {% else %}
-                <h3>A louer</h3>
+                <h3>{%trans 'A louer'%}</h3>
             {% endif %}
                 
             <ul>
                 <li>
-                    Genre : {{movie.genre}}
+                    {% trans 'Genre' %} : {{movie.genre}}
                 </li>
                 <li>
-                    Directeur : {{movie.director}}
+                    {% trans 'Directeur' %} : {{movie.director}}
                 </li>
                 <li>
-                    Acteurs : {{movie.actors}}
+                    {% trans 'Acteurs' %} : {{movie.actors}}
                 </li>
-                <li>Pays : {{movie.country}}
+                <li>{% trans 'Pays' %} : {{movie.country}}
                 </li>
                 <li>
-                    Date de sortie : {{movie.release_date}}
+                    {% trans 'Date de sortie' %} : {{movie.release_date}}
                 </li>
-                <li>Durée : {{ movie.length|time:"H"}}h
+                <li>{% trans 'Durée' %} : {{ movie.length|time:"H"}}h
                     {{ movie.length|time:"i"}}m</li>
             </ul>
-            <span>Synopsis :</span>
+            <span>{% trans 'Synopsis' %} :</span>
             <p>{{movie.synopsis}}</p>
         </div>
         <div class="col-lg-4">
             
-            {% if movie.trailer != null %}
+            {% if movie.trailer_url != null %}
             <iframe  
             src="{{movie.trailer_url}}" 
             frameborder="0" 
@@ -51,24 +51,24 @@
             controls=2 
             ></iframe>
             {% endif %}
-                <a href="{% url "movie-update" movie.slug %}">
-                <button>Modifier</button>
+                <a href="{% url "movie-update" movie|get_translated_field:'slug' %}">
+                <button>{% trans 'Modifier' %}</button>
                 </a>
-                <form action="{% url "movie-delete" movie.slug %}" method="get">{% csrf_token %}
-                    <button type="submit">Supprimer</button>
+                <form action="{% url "movie-delete" movie|get_translated_field:'slug' %}" method="get">{% csrf_token %}
+                    <button type="submit">{% trans 'Supprimer' %}</button>
                 </form>
                 {% if movie.rented == False %}
                 <form action="{% url 'movieRentAdd' %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="movie-pk" value="{{movie.id}}" hidden>
                 <input type="text" name="customer-username" value="{{user.username}}" hidden>
-                    <button type="submit">Louer</button>                
+                    <button type="submit">{% trans 'Louer' %}</button>                
                 </form>
                 {% elif user.is_superuser %}
                 <form action="{% url 'movieReturn' %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="movie-pk" value="{{movie.id}}" hidden>
-                    <button type="submit">Retour</button>                
+                    <button type="submit">{% trans 'Retour' %}</button>                
                 </form>
                 {% endif %}
         </div>

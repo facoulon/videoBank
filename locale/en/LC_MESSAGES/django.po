@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-11-12 13:09+0000\n"
+"PO-Revision-Date: 2018-11-12 15:06+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: videoBank/settings.py:125
+msgid "Francais"
+msgstr "French"
+
+#: videoBank/settings.py:126
+msgid "Anglais"
+msgstr "English"
+
+#: videoRental/models.py:23
+msgid "auteur"
+msgstr "author"
+
+#: videoRental/models.py:24
+msgid "pays"
+msgstr "country"
+
+#: videoRental/models.py:25
+msgid "directeur"
+msgstr "director"
+
+#: videoRental/models.py:26
+msgid "durée"
+msgstr "length"
+
+#: videoRental/models.py:27
+msgid "image"
+msgstr "cover"
+
+#: videoRental/models.py:28
+msgid "date de sortie"
+msgstr "release date"
+
+#: videoRental/models.py:29
+msgid "loué"
+msgstr "rented"
+
+#: videoRental/models.py:30
+msgid "titre"
+msgstr "title"
+
+#: videoRental/models.py:33
+msgid "bande annonce"
+msgstr "trailer url"
+
+#: videoRental/models.py:46
+msgid "utilisateur"
+msgstr "user"
+
+#: videoRental/models.py:56
+msgid "date de location"
+msgstr "checkout date"
+
+#: videoRental/models.py:57
+msgid "date de retour"
+msgstr "return date"
+
+#: videoRental/models.py:58
+msgid "client"
+msgstr "customer"
+
+#: videoRental/models.py:59
+msgid "film"
+msgstr "movie"
+
+#: videoRental/templates/videoRental/header.html:23
+msgid "Liste Film"
+msgstr "Last movie"
+
+#: videoRental/templates/videoRental/header.html:26
+msgid "Ajouter un Film"
+msgstr "Add movie"
+
+#: videoRental/templates/videoRental/header.html:29
+msgid "Liste de Location"
+msgstr "Checkout date"
+
+#: videoRental/templates/videoRental/header.html:38
+msgid "Mon Profil"
+msgstr "My Profile"
+
+#: videoRental/templates/videoRental/header.html:41
+msgid "Mes Location"
+msgstr "My movie rents"
+
+#: videoRental/templates/videoRental/header.html:43
+msgid "Déconnection"
+msgstr "Disconnected"
+
+#: videoRental/templates/videoRental/header.html:46
+msgid " Admin Site"
+msgstr " Interface admin"
+
+#: videoRental/templates/videoRental/header.html:51
+msgid "Se Connecter"
+msgstr "Login"
+
+#: videoRental/templates/videoRental/header.html:54
+msgid "S'inscrire"
+msgstr "Logup"
+
+#: videoRental/templates/videoRental/movie_detail.html:11
+#: videoRental/templates/videoRental/movie_list.html:14
+msgid "Image indisponible"
+msgstr "Picture not available"
+
+#: videoRental/templates/videoRental/movie_detail.html:17
+msgid "Indisponible"
+msgstr "Not available"
+
+#: videoRental/templates/videoRental/movie_detail.html:19
+msgid "A louer"
+msgstr "Rental"
+
+#: videoRental/templates/videoRental/movie_detail.html:24
+msgid "Genre"
+msgstr "Genre"
+
+#: videoRental/templates/videoRental/movie_detail.html:27
+msgid "Directeur"
+msgstr "Director"
+
+#: videoRental/templates/videoRental/movie_detail.html:30
+msgid "Acteurs"
+msgstr "Actors"
+
+#: videoRental/templates/videoRental/movie_detail.html:32
+msgid "Pays"
+msgstr "Country"
+
+#: videoRental/templates/videoRental/movie_detail.html:35
+msgid "Date de sortie"
+msgstr "Release date"
+
+#: videoRental/templates/videoRental/movie_detail.html:37
+msgid "Durée"
+msgstr "Length"
+
+#: videoRental/templates/videoRental/movie_detail.html:40
+msgid "Synopsis"
+msgstr ""
+
+#: videoRental/templates/videoRental/movie_detail.html:55
+msgid "Modifier"
+msgstr "Modify"
+
+#: videoRental/templates/videoRental/movie_detail.html:58
+msgid "Supprimer"
+msgstr "Delete"
+
+#: videoRental/templates/videoRental/movie_detail.html:65
+msgid "Louer"
+msgstr "Rental"
+
+#: videoRental/templates/videoRental/movie_detail.html:71
+msgid "Retour"
+msgstr "Return"
+
+#: videoRental/templates/videoRental/movierent_list.html:5
+msgid "Movie Rent List"
+msgstr "Liste des films loués"
+
+#: videoRental/templates/videoRental/movierent_list.html:14
+msgid "Customer"
+msgstr "Client"
+
+#: videoRental/templates/videoRental/movierent_list.html:16
+msgid "Movie"
+msgstr "Film"
+
+#: videoRental/templates/videoRental/movierent_list.html:17
+msgid "Checkout Date"
+msgstr "Date de location"
+
+#: videoRental/templates/videoRental/movierent_list.html:18
+msgid "Return Date"
+msgstr "Date de retour"

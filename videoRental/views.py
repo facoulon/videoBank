@@ -10,12 +10,14 @@ from .models import Movie, MovieRent, Customer
 from django.contrib.auth.mixins import PermissionRequiredMixin
 import datetime
 from datetime import timedelta, datetime
+from parler.views import TranslatableSlugMixin
 
 class MovieListView(ListView):
     model = Movie
     
-class MovieDetailView(DetailView):
+class MovieDetailView(TranslatableSlugMixin,DetailView):
     model = Movie
+
 
 class MovieCreateView(PermissionRequiredMixin, CreateView):
     permission_required = 'videoRent.add_Movie'
@@ -26,7 +28,7 @@ class MovieCreateView(PermissionRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('movie-detail', args=[self.object.slug] )
 
-class MovieUpdateView(PermissionRequiredMixin, UpdateView):
+class MovieUpdateView(TranslatableSlugMixin, PermissionRequiredMixin, UpdateView):
     permission_required = 'videoRent.change_Movie'
     model = Movie
     template_name = "videoRental/movie_form.html"

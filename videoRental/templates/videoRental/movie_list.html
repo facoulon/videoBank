@@ -1,17 +1,17 @@
 {% extends 'videoRental/base.html' %}
-
+{% load i18n parler_tags %}
 {% block content %}
 <div class="container-list">
     <div class="row list-movie">
         {% for movie in object_list %}
         <div class="col-3 movie">
-            <a href="{% url "movie-detail" movie.slug %}">
+            <a href="{% url "movie-detail" movie|get_translated_field:'slug' %}">
                 <h2>{{movie.title}}</h2>
                 
                 {% if movie.picture != "" %}
                 <img class="img-fluid cover" src="{{movie.picture.url}}" alt="Affiche">
                 {% else %}
-                <p class="cover">Image indisponible</p>
+                <p class="cover">{% trans 'Image indisponible' %}</p>
                 {% endif %}
             </a>
         </div>

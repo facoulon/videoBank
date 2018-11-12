@@ -20,22 +20,25 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from userena import views as userena_views
-
+from django.conf.urls.i18n import i18n_patterns
 from videoRental.views import MovieListView, MovieDetailView, MovieCreateView, MovieUpdateView, MovieDeleteView, MovieRentListView, MovieRentView, MovieReturnView
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('userena.urls')),
-    
     url(r"^$", MovieListView.as_view(), name="movie-list"),
-    url(r"^(?:/(?P<username>[-\w]+))/rent-log$", MovieRentListView.as_view(), name="movie-rent-customer-log"),
-    url(r"^rent$", MovieRentListView.as_view(), name="movie-rent-list"),
-
     url(r"^(?P<slug>[-\w]+)/$", MovieDetailView.as_view(), name="movie-detail"),
-    url(r"^movie/create$", MovieCreateView.as_view(), name="movie-create"),
+    url(r"^rent$", MovieRentListView.as_view(), name="movie-rent-list"),
     url(r"^movie/(?P<slug>[-\w]+)/update$", MovieUpdateView.as_view(), name="movie-update"),
     url(r"^movie/(?P<slug>[-\w]+)/delete$", MovieDeleteView.as_view(), name="movie-delete"),
-    
+    url(r"^(?:/(?P<username>[-\w]+))/rent-log$", MovieRentListView.as_view(), name="movie-rent-customer-log"),
     url(r"^movie/rent$", MovieRentView.as_view(), name="movieRentAdd"),
     url(r"^movie/return$", MovieReturnView.as_view(), name="movieReturn"),
+    url(r"^movie/create$", MovieCreateView.as_view(), name="movie-create"),
+)
+
+urlpatterns += [
+    url(r'^accounts/', include('userena.urls')),
+    
+
+    
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
