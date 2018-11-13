@@ -1,0 +1,7 @@
+    Hello {{username}},
+
+        Rend le film {{movie}}, dépêche toi !!!
+    Hello world
+    
+        Best regards,
+        John Appleseed

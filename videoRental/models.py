@@ -64,7 +64,8 @@ class Customer(UserenaBaseProfile):
         verbose_name = "client"
 
 class MovieRent(models.Model):
-    checkout_date = models.DateTimeField(verbose_name=_("date de location"),auto_now=False, auto_now_add=True)
+    # checkout_date = models.DateTimeField(verbose_name=_("date de location"),auto_now=False, auto_now_add=True)
+    checkout_date = models.DateTimeField(verbose_name=_("date de location"),auto_now=False, auto_now_add=False)
     return_date = models.DateTimeField(verbose_name=_("date de retour"),auto_now=False, auto_now_add=False,blank=True, null=True)
     customer = models.ForeignKey('Customer',verbose_name=_("client"),blank=True, null=True, on_delete=models.CASCADE)
     movie = models.ForeignKey('Movie',verbose_name=_("film"),blank=True, null=True, on_delete=models.CASCADE)

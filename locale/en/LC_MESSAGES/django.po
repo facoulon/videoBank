@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-11-12 13:09+0000\n"
-"PO-Revision-Date: 2018-11-12 15:06+0100\n"
+"PO-Revision-Date: 2018-11-13 10:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -83,7 +83,7 @@ msgstr "movie"
 
 #: videoRental/templates/videoRental/header.html:23
 msgid "Liste Film"
-msgstr "Last movie"
+msgstr "List movie"
 
 #: videoRental/templates/videoRental/header.html:26
 msgid "Ajouter un Film"
@@ -91,7 +91,7 @@ msgstr "Add movie"
 
 #: videoRental/templates/videoRental/header.html:29
 msgid "Liste de Location"
-msgstr "Checkout date"
+msgstr "Rental List"
 
 #: videoRental/templates/videoRental/header.html:38
 msgid "Mon Profil"
